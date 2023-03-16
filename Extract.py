@@ -12,13 +12,13 @@ import logging
 
 
 
-logging.basicConfig(filename='C:/Users/PBBE05221/OneDrive - SNCF/Bureau/Analyse/Brouillon/Programme/V2/auto-py-to-exe-master/output/Historique_extraction.log', level=logging.INFO, format="%(asctime)s:%(levelname)s:%(message)s", encoding='utf-8')
+logging.basicConfig(filename='**Historique_extraction.log', level=logging.INFO, format="%(asctime)s:%(levelname)s:%(message)s", encoding='utf-8')
 
 logging.info("____________________Début programme____________________")
 
 ### Fonction qui stock dans une variable le fichier le plus récent du dossier téléchargement
 def latest_download_file():
-      path = r'C:/Users/PBBE05221/Downloads'
+      path = r'C:/Users/**/Downloads'
       os.chdir(path)
       files = sorted(os.listdir(os.getcwd()), key=os.path.getmtime)
       newest = files[-1]
@@ -29,8 +29,8 @@ def latest_download_file():
 
 ### Récupération des données ITV Qlick ###
 try:   
-    driver = webdriver.Chrome(executable_path=r"C:/Users/PBBE05221/.wdm/drivers/chromedriver/win32/108.0.5359.71/chromedriver.exe")
-    driver.get("https://digitop-qlik.sncf.fr/sense/app/370157a3-55d7-44d8-9179-f99f65515736/sheet/69873b99-bd04-4d32-8a27-ae577f152de6/state/analysis")
+    driver = webdriver.Chrome(executable_path=r"C:/Users/**/.wdm/drivers/chromedriver/win32/108.0.5359.71/chromedriver.exe")
+    driver.get("**site**")
     driver.maximize_window()
 
     attente_until = WebDriverWait(driver, 80).until(EC.text_to_be_present_in_element((By.XPATH, '//*[@id="grid"]/div[8]/div[1]/article/div[1]/div/div/div/div[1]/div[2]/table/tbody/tr[1]/th[1]/div/div/div/span'), 'N° intervention'))
@@ -79,18 +79,18 @@ try:
 
 
     ### Renommage du fichier téléchargé ###
-    folder = os.listdir("C:/Users/PBBE05221/Downloads")
-    newest = max(glob.iglob('C:/Users/PBBE05221/Downloads/*.xlsx'), key=os.path.getctime)
+    folder = os.listdir("C:/Users/**/Downloads")
+    newest = max(glob.iglob('C:/Users/**/Downloads/*.xlsx'), key=os.path.getctime)
     src = newest
-    dest = 'C:/Users/PBBE05221/Downloads/ITV.xlsx'
+    dest = 'C:/Users/**/Downloads/ITV.xlsx'
     os.rename(src, dest) 
 
     ### Déplacement du fichier IV ###
-    filePath = shutil.copy("C:/Users/PBBE05221/Downloads/ITV.xlsx", "C:/Users/PBBE05221/SNCF/[ESTI IDF] GATI (Grp. O365) - Documents/Familles d'installations télécoms/Famille H Info Voyageurs Affichage/Dauphine/Analyse/")
-    filePath = shutil.copy("C:/Users/PBBE05221/Downloads/ITV.xlsx", "C:/Users/PBBE05221/SNCF/[ESTI IDF] GATI (Grp. O365) - Documents/Familles d'installations télécoms/Famille N EAS Vidéo CADI/Vidéo Protection/Analyse/")
+    filePath = shutil.copy("C:/Users/**/Downloads/ITV.xlsx", "C:/Users/**/")
+    filePath = shutil.copy("C:/Users/**/Downloads/ITV.xlsx", "C:/Users/**/")
 
     ### Suppression du fichier IV dans son dossier d'origine ###
-    os.remove('C:/Users/PBBE05221/Downloads/ITV.xlsx')
+    os.remove('C:/Users/**/Downloads/ITV.xlsx')
 
     print("! Fichier ITV Qlick renommé et déplacé avec succès !") 
     logging.info("Fichier ITV Qlick renommé et déplacé avec succès !")
@@ -155,18 +155,18 @@ try:
 
 
     ### Renommage du fichier DI téléchargé ###
-    folder = os.listdir("C:/Users/PBBE05221/Downloads")
-    newest = max(glob.iglob('C:/Users/PBBE05221/Downloads/*.xlsx'), key=os.path.getctime)
+    folder = os.listdir("C:/Users/**/Downloads")
+    newest = max(glob.iglob('C:/Users/**/Downloads/*.xlsx'), key=os.path.getctime)
     src = newest
     dest = 'C:/Users/PBBE05221/Downloads/DI.xlsx'
     os.rename(src, dest) 
 
     ### Déplacement du fichier DI ###
-    filePath = shutil.copy("C:/Users/PBBE05221/Downloads/DI.xlsx", "C:/Users/PBBE05221/SNCF/[ESTI IDF] GATI (Grp. O365) - Documents/Familles d'installations télécoms/Famille H Info Voyageurs Affichage/Dauphine/Analyse/")
-    filePath = shutil.copy("C:/Users/PBBE05221/Downloads/DI.xlsx", "C:/Users/PBBE05221/SNCF/[ESTI IDF] GATI (Grp. O365) - Documents/Familles d'installations télécoms/Famille N EAS Vidéo CADI/Vidéo Protection/Analyse/")
+    filePath = shutil.copy("C:/Users/**/Downloads/ITV.xlsx", "C:/Users/**/")
+    filePath = shutil.copy("C:/Users/**/Downloads/ITV.xlsx", "C:/Users/**/")
 
     ### Suppression du fichier DI dans son dossier d'origine ###
-    os.remove('C:/Users/PBBE05221/Downloads/DI.xlsx')
+    os.remove('C:/Users/**/Downloads/DI.xlsx')
 
     print("! Fichier DI Qlick renommé et déplacé avec succès !") 
     logging.info("Fichier DI Qlick renommé et déplacé avec succès !")
@@ -184,7 +184,7 @@ except:
 
 ### Récupération des données WEBRMA ###
 try:    
-    driver.get("https://secteur-logistique-ti.mn.sncf.fr/controller/rma/visuFiches_refactored.php")
+    driver.get("**")
     driver.refresh()
 
     attente_until = WebDriverWait(driver, 60).until(EC.presence_of_element_located((By.ID, 'acceptRGPD')))
@@ -227,20 +227,20 @@ try:
 
 
     ### Renommage du fichier téléchargé ###
-    folder = os.listdir("C:/Users/PBBE05221/Downloads")
-    newest = max(glob.iglob('C:/Users/PBBE05221/Downloads/*.csv'), key=os.path.getctime)
+    folder = os.listdir("C:/Users/**/Downloads")
+    newest = max(glob.iglob('C:/Users/**/Downloads/*.csv'), key=os.path.getctime)
     src = newest  
-    dest = 'C:/Users/PBBE05221/Downloads/RMA.csv'
+    dest = 'C:/Users/**/Downloads/RMA.csv'
     os.rename(src, dest)
 
 
     ### Déplacement du fichier RMA ###
-    filePath = shutil.copy("C:/Users/PBBE05221/Downloads/RMA.csv", "C:/Users/PBBE05221/SNCF/[ESTI IDF] GATI (Grp. O365) - Documents/Familles d'installations télécoms/Famille H Info Voyageurs Affichage/Dauphine/Analyse/")
-    filePath = shutil.copy("C:/Users/PBBE05221/Downloads/RMA.csv", "C:/Users/PBBE05221/SNCF/[ESTI IDF] GATI (Grp. O365) - Documents/Familles d'installations télécoms/Famille N EAS Vidéo CADI/Vidéo Protection/Analyse/")
+    filePath = shutil.copy("C:/Users/**/Downloads/ITV.xlsx", "C:/Users/**/")
+    filePath = shutil.copy("C:/Users/**/Downloads/ITV.xlsx", "C:/Users/**/")
 
 
     ### Suppression du fichier dans son dossier d'origine ###
-    os.remove('C:/Users/PBBE05221/Downloads/RMA.csv')
+    os.remove('C:/Users/**/Downloads/RMA.csv')
 
     print("! Fichier RMA renommé et déplacé avec succès !")
     logging.info("Fichier RMA renommé et déplacé avec succès !") 

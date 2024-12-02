@@ -110,7 +110,7 @@ except:
 
 ### Récupération des données DI Qlick ###
 try:   
-    driver.get("https://digitop-qlik.sncf.fr/sense/app/4703c3d6-d136-4125-a251-3bdc34f23e18/sheet/1ba16cb4-936f-480f-9dad-19ae5985f3f3/state/analysis")
+    driver.get("https://digitop-qlik/analysis")
 
     attente_until = WebDriverWait(driver, 60).until(EC.text_to_be_present_in_element((By.XPATH, '//*[@id="grid"]/div[8]/div[1]/article/div[1]/div/div/div/div[1]/div[2]/table/tbody/tr/th[1]/div/div/div/span'), 'N°DI'))
     time.sleep(2)
